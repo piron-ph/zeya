@@ -98,6 +98,7 @@ EXIT /B
 
 :op2 
 echo "Sorry, you cant say no hehe"
+ping localhost -n 2 >nul
 echo "Starting message".
 cls
 ping localhost -n 2 >nul
