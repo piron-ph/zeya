@@ -1,0 +1,5 @@
+[]
+
+a b c d a b a cd b cd ab cd
+
+a b c d a b a c d b c d a 
