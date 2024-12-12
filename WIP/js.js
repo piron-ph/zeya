@@ -299,10 +299,10 @@ function getTextMatrix(text) {
 const classNames = ["on-1", "on-2", "on-3", "on-4"];
 
 function displayScrollingText(text) {
-  const textMatrix = getTextMatrix(text + "   "); // Add some space at the end
-  let startCol = -COLS; // Start off-screen to the left
+  const textMatrix = getTextMatrix(text + "   "); 
+  let startCol = -COLS;
   let lastUpdate = performance.now();
-  const delay = 100; // Adjust this value to control speed (higher = slower, in milliseconds)
+  const delay = 100;
 
   function updateDisplay() {
     const now = performance.now();
@@ -318,14 +318,14 @@ function displayScrollingText(text) {
             const randomClass =
               classNames[Math.floor(Math.random() * classNames.length)];
 
-            // Remove all possible 'on' classes
+
             ledMatrix[i][j].classList.remove("on-1", "on-2", "on-3", "on-4");
 
             if (isOn) {
               ledMatrix[i][j].classList.add(randomClass);
             }
           } else {
-            // Remove all possible 'on' classes if off-screen
+
             ledMatrix[i][j].classList.remove("on-1", "on-2", "on-3", "on-4");
           }
         }
@@ -342,4 +342,4 @@ function displayScrollingText(text) {
 
   updateDisplay();
 }
-displayScrollingText("WE AND US");
+displayScrollingText("KOOL NO?");
