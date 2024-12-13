@@ -342,4 +342,4 @@ function displayScrollingText(text) {
 
   updateDisplay();
 }
-displayScrollingText("KOOL NO?");
+displayScrollingText("DI PA TAPOS BEBE!");
