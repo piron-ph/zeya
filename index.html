@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOU</title>
-
-    <link rel="stylesheet" href="design.css">
+    <title>I LOVE.</title>
+    <link rel="stylesheet" href="test.css">
 </head>
-<body>
-    <div class="git-contributions">
-        <div style="text-align: center;">
-            <a>IM A BUTTON</a>
-        </div>
-            <div id="led-container"></div>
-            <div class="bottom-scale">
-              <p>Less</p>
-              <div class="color-box legend-1"></div>
-              <div class="color-box legend-2"></div>
-              <div class="color-box legend-3"></div>
-              <div class="color-box legend-4"></div>
-              <div class="color-box legend-5"></div>
-              <p>More</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-<script src="js.js"></script>
+<body>
+
+    <style>
+        html {
+            background: linear-gradient(to bottom right,
+                    #121212, #121212,#ff66b2, #ff3385,
+                    #ff66cc, #ff99ff,
+                    #ff66b3, #ff1aff,
+                    #ff4d94, #ff0080, #121212, #121212);
+            background-repeat: no-repeat;
+            background-size: 1000% 1000%;
+            animation: gradient 50s ease infinite;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: pink;
+            font-family: Helvetica, sans-serif;
+            font-weight: lighter;
+        }
+
+        .center {
+            font-weight: bolder;
+        }
+    </style>
+
+
+    <div class="container">
+        <h1 class="center">I LOVE</h1>
+        <h1 id="word">
+        </h1>
+    </div>
+
+    <script src="zeya.js"></script>
 </body>
+
 </html>
