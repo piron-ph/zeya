@@ -2,8 +2,7 @@ Letters = function() {
   this.lettersDOM = null;
   this.active = null;
   this.letters = [];
-  this.alphabet = ["a", "b", "c", "d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","i","u","v","w","x","y","z","~","&","|","^","ç","@","]","[","{","}","ù","*","µ","¤","$","£","€","°",")","(","+","-","/","<",">","²","`","é","è","1","2","3","4","5","6","7","8","9","0"
-  ];
+  this.alphabet = ["a", "b", "c", "d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","i","u","v","w","x","y","z","~","&","|","^","ç","@","]","[","{","}","ù","*","µ","¤","$","£","€","°",")","(","+","-","/","<",">","²","`","é","è","1","2","3","4","5","6","7","8","9","0"];
 
   return this;
 };
@@ -43,7 +42,6 @@ Letters.prototype.init = function( word ) {
   this.animate();
   
   return this;
-  
 };
 
 Letters.prototype.animate = function() {
@@ -111,7 +109,6 @@ Letter = function( DOMElement, nextChar ) {
   this.animate();
   
   return this;
- 
 };
 
 Letter.prototype.animate = function() {
@@ -121,7 +118,6 @@ Letter.prototype.animate = function() {
   if ( !this.isDead ) {
     window.requestAnimationFrame( this.animate.bind(this) );
   }
-  
   
   if ( this.total < this.duration ) {
     
@@ -147,26 +143,31 @@ Letter.prototype.render = function( char ) {
   if ( !this.animating ) {
     this.char = char;
   }
-  
 };
 
-var word = ["THE WAY YOUR EYES SHAPES THAT IT COMPLIMENTS THE WAY YOU SMILE.", "HOW EVERY TIME THAT I TALK TO YOU I FEEL SAFE AND RELAXED.", "YOUR GLASSES AND THE GLARE IT MAKES MATCHING UP THE WAY YOUR BEAUTY SHINES.", "SHARING YOU EVERYTHING THAT I HAVE", "THE WAY THE NECKLACE I GAVE YOU FITS YOU. ", "YOUR SMILE AND THE WAY IT MAKES ME SHIVERS; A GOOSEBUMPS.", "YOUR EYES, HOW I CAN STARE AT THEM LONG ENOUGH TO KNOW HOW MUCH I WANT TO SPEND ALL MY TIME WITH YOU.", "EVERY SMALL THINGS THAT YOU DO. HOW IT FILLS EVERYTHING UP, AND MAKING EVERYTHING AS PERFECT AS YOU ARE.", "MAKING YOU SMILE",  ];
-var nextWord = 1;
 
+var words = [];
+var nextWord = 0;
 var letters = new Letters();
 
-setTimeout( function() {
-  
-  letters.start( word[ nextWord ] );
-  
-  setInterval(function() {
-    nextWord++;
-    if ( nextWord >= word.length )
-      nextWord = 0;
-    
-    letters.start( word[ nextWord ] );
-  }, 10000);
-  
-}, 4000);
+
+fetch('ilove.txt')
+  .then(response => response.text()) 
+  .then(data => {
+    words = data.split('\n'); 
+    startNextWord(); 
+
+    setInterval(function() {
+      nextWord++;
+      if (nextWord >= words.length) nextWord = 0; 
+      startNextWord();
+    }, 10000);
+  })
+  .catch(error => console.error("Error fetching the words file:", error));
 
 
+function startNextWord() {
+  if (words.length > 0) {
+    letters.start(words[nextWord]);
+  }
+}
