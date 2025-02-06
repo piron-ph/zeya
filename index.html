@@ -1,56 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I LOVE.</title>
-    <link rel="stylesheet" href="test.css">
-</head>
-
-<body>
-
     <style>
-        html {
-            background: linear-gradient(to bottom right,
-                    #121212, #121212,#ff66b2, #ff3385,
-                    #ff66cc, #ff99ff,
-                    #ff66b3, #ff1aff,
-                    #ff4d94, #ff0080, #121212, #121212);
-            background-repeat: no-repeat;
-            background-size: 1000% 1000%;
-            animation: gradient 50s ease infinite;
-            height: 100%;
-            overflow: hidden;
-        }
 
         body {
             display: flex;
-            height: 100vh;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+  
+        .container {
             text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
-            color: pink;
-            font-family: Helvetica, sans-serif;
-            font-weight: lighter;
+   
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
-        .center {
-            font-weight: bolder;
+    
+        #maliyanbabe {
+            color: red;
+            display: none;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
         }
     </style>
-
+</head>
+<body>
 
     <div class="container">
-        <h1 class="center">I LOVE</h1>
-        <h1 id="word">
-        </h1>
+        <h2>Type the word you see in the letter included in your flower</h2>
+        <input type="text" id="inputField" placeholder="type it here, love :)">
+        <p id="maliyanbabe">Babe, you have to wait until the 7th. There you will see the right word.</p>
+        <p id="maliyanbabe">Try uppercase.</p>
     </div>
 
-    <script src="zeya.js"></script>
-</body>
+    <script>
+        const magicWord = "love";
+        const inputField = document.getElementById("inputField");
+        const maliyanbabe = document.getElementById("maliyanbabe");
 
+    
+        inputField.addEventListener("input", function() {
+     
+            if (inputField.value.toLowerCase() === magicWord.toLowerCase()) {
+                window.location.href = "https://piron-ph.github.io/zeya/ilove.html";  
+            } else {
+                maliyanbabe.style.display = "block";  
+            }
+        });
+    </script>
+
+</body>
 </html>
+
