@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I LOVE.</title>
     <style>
-
         body {
             display: flex;
             justify-content: center;
@@ -95,10 +94,12 @@
     <script>
         const magicWord = "love";
         const alyssaWord = "alyssa";
+        const clueWord = "clue"; 
         const inputField = document.getElementById("inputField");
         const maliyanbabe = document.getElementById("maliyanbabe");
         const consoleWindow = document.getElementById("consoleWindow");
         const consoleText = document.getElementById("consoleText");
+
 
         async function loadMessage() {
             try {
@@ -108,9 +109,10 @@
                 return message;
             } catch (error) {
                 console.error(error);
-                return "Sorry, babe. Baka may sira yung server. \nnomessage.";
+                return "Error loading message."; 
             }
         }
+
 
         async function typeConsoleMessage() {
             const message = await loadMessage();
@@ -121,25 +123,26 @@
                 if (i === message.length) {
                     clearInterval(typingInterval);
                 }
-            }, 100);
+            }, 100); 
         }
 
         inputField.addEventListener("input", function() {
             if (inputField.value.toLowerCase() === magicWord.toLowerCase()) {
                 window.location.href = "https://piron-ph.github.io/zeya/ilove.html";
             } 
-   
             else if (inputField.value.toLowerCase() === alyssaWord.toLowerCase()) {
                 maliyanbabe.style.display = "none";
                 consoleWindow.style.display = "block";
                 typeConsoleMessage();
+            }
+            else if (inputField.value.toLowerCase() === clueWord.toLowerCase()) {
+                maliyanbabe.textContent = "It is something rational";
             } 
             else {
                 maliyanbabe.style.display = "block";
                 consoleWindow.style.display = "none";
             }
         });
-
     </script>
 
 </body>
