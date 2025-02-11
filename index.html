@@ -104,12 +104,12 @@
         async function loadMessage() {
             try {
                 const response = await fetch('hidden1.txt');
-                if (!response.ok) throw new Error('Failed to load message file');
+                if (!response.ok) throw new Error('sorry babe. walang gumagana huhu');
                 const message = await response.text();
                 return message;
             } catch (error) {
                 console.error(error);
-                return "Error loading message."; 
+                return "sorry babe. walang gumagana huhu"; 
             }
         }
 
