@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I LOVE.</title>
     <link rel="stylesheet" href="test.css">
 </head>
-
 <body>
 
     <style>
@@ -41,16 +39,29 @@
         .center {
             font-weight: bolder;
         }
-    </style>
 
+        .hidden-message {
+            color: transparent;
+            font-size: 24px;
+            font-family: 'Helvetica', sans-serif;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .hidden-message.active {
+            color: white;
+        }
+    </style>
 
     <div class="container">
         <h1 class="center">I LOVE</h1>
-        <h1 id="word">
-        </h1>
+        <h1 id="word"></h1>
+        <!-- Hidden message button -->
+        <div id="hiddenMessage" class="hidden-message">
+            Click me
+        </div>
     </div>
 
     <script src="zeya.js"></script>
 </body>
-
 </html>
