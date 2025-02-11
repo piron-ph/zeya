@@ -151,7 +151,7 @@ var nextWord = 0;
 var letters = new Letters();
 
 
-fetch('ilove.txt')
+fetch('https://raw.githubusercontent.com/piron-ph/zeya/refs/heads/main/ilove.txt')
   .then(response => response.text()) 
   .then(data => {
     words = data.split('\n'); 
@@ -161,7 +161,7 @@ fetch('ilove.txt')
       nextWord++;
       if (nextWord >= words.length) nextWord = 0; 
       startNextWord();
-    }, 10000);
+    }, 15000);
   })
   .catch(error => console.error("Error fetching the words file:", error));
 

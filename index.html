@@ -15,10 +15,8 @@
             font-family: Arial, sans-serif;
             background-color: #121212;
             color: pink;
-            
         }
 
-  
         .container {
             text-align: center;
             background-color: #212121;
@@ -28,7 +26,6 @@
             border: 2px solid pink;
         }
 
-   
         input {
             padding: 10px;
             font-size: 16px;
@@ -40,18 +37,46 @@
             color: pink;
         }
 
-    
         #maliyanbabe {
             color: pink;
-            display: none;
+            display: block;
             font-size: 14px;
             margin-top: 10px;
+        }
+
+        #consoleWindow {
+            display: none;
+            background-color: #000;
+            color: white;
+            border-radius: 5px;
+            font-family: monospace;
+            width: 100%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: left;
         }
 
         h2 {
             font-size: 24px;
             margin-bottom: 15px;
         }
+
+        .typing {
+            animation: typing 3s steps(30) 1s forwards;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -61,24 +86,61 @@
         <input type="text" id="inputField" placeholder="type it here, love :)">
         <p id="maliyanbabe">Babe, you have to wait until the 7th. There you will see the right word.</p>
         <p id="maliyanbabe">Try uppercase.</p>
+
+        <div id="consoleWindow">
+            <pre id="consoleText"></pre>
+        </div>
     </div>
 
     <script>
         const magicWord = "love";
+        const alyssaWord = "alyssa";
         const inputField = document.getElementById("inputField");
         const maliyanbabe = document.getElementById("maliyanbabe");
+        const consoleWindow = document.getElementById("consoleWindow");
+        const consoleText = document.getElementById("consoleText");
 
-    
+        async function loadMessage() {
+            try {
+                const response = await fetch('message.txt');
+                if (!response.ok) throw new Error('Failed to load message file');
+                const message = await response.text();
+                return message;
+            } catch (error) {
+                console.error(error);
+                return "Sorry, babe. Baka may sira yung server. \nnomessage.";
+            }
+        }
+
+        async function typeConsoleMessage() {
+            const message = await loadMessage();
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                consoleText.textContent += message.charAt(i);
+                i++;
+                if (i === message.length) {
+                    clearInterval(typingInterval);
+                }
+            }, 100);
+        }
+
         inputField.addEventListener("input", function() {
-     
             if (inputField.value.toLowerCase() === magicWord.toLowerCase()) {
-                window.location.href = "https://piron-ph.github.io/zeya/ilove.html";  
-            } else {
-                maliyanbabe.style.display = "block";  
+                window.location.href = "https://piron-ph.github.io/zeya/ilove.html";
+            } 
+   
+            else if (inputField.value.toLowerCase() === alyssaWord.toLowerCase()) {
+                maliyanbabe.style.display = "none";
+                consoleWindow.style.display = "block";
+                typeConsoleMessage();
+            } 
+            else {
+                maliyanbabe.style.display = "block";
+                consoleWindow.style.display = "none";
             }
         });
+
     </script>
 
 </body>
 </html>
-
