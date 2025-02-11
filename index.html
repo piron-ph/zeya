@@ -102,7 +102,7 @@
 
         async function loadMessage() {
             try {
-                const response = await fetch('message.txt');
+                const response = await fetch('hidden1.txt');
                 if (!response.ok) throw new Error('Failed to load message file');
                 const message = await response.text();
                 return message;
