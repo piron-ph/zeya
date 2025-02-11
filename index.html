@@ -95,12 +95,13 @@
         const magicWord = "love";
         const alyssaWord = "alyssa";
         const clueWord = "clue"; 
+        const clue2Word = "clue2";
+        const clue3Word = "clue3"; 
         const inputField = document.getElementById("inputField");
         const maliyanbabe = document.getElementById("maliyanbabe");
         const consoleWindow = document.getElementById("consoleWindow");
         const consoleText = document.getElementById("consoleText");
-
-
+    
         async function loadMessage() {
             try {
                 const response = await fetch('hidden1.txt');
@@ -112,8 +113,7 @@
                 return "sorry babe. walang gumagana huhu"; 
             }
         }
-
-
+    
         async function typeConsoleMessage() {
             const message = await loadMessage();
             let i = 0;
@@ -125,7 +125,7 @@
                 }
             }, 100); 
         }
-
+    
         inputField.addEventListener("input", function() {
             if (inputField.value.toLowerCase() === magicWord.toLowerCase()) {
                 window.location.href = "https://piron-ph.github.io/zeya/ilove.html";
@@ -138,12 +138,19 @@
             else if (inputField.value.toLowerCase() === clueWord.toLowerCase()) {
                 maliyanbabe.textContent = "It is something rational";
             } 
+            else if (inputField.value.toLowerCase() === clue2Word.toLowerCase()) {
+                maliyanbabe.textContent = "6 letters"; 
+            }
+            else if (inputField.value.toLowerCase() === clue3Word.toLowerCase()) {
+                maliyanbabe.textContent = "it is something you owned, some may have it, and it cannot be taken away from you"; 
+            }
             else {
                 maliyanbabe.style.display = "block";
                 consoleWindow.style.display = "none";
             }
         });
     </script>
+    
 
 </body>
 </html>
